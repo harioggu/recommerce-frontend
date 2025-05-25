@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 import * as authService from "../services/authService";
 import '../styles/LoginPage.css';
@@ -8,7 +8,6 @@ const LoginPage = ({ onLoginSuccess }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Check if user is already logged in
   useEffect(() => {
@@ -66,44 +65,6 @@ const LoginPage = ({ onLoginSuccess }) => {
       </div>
     </div>
   );
-};
-
-const styles = {
-  page: {
-    minHeight: "100vh",
-    backgroundColor: "#e0e7ff",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "1rem",
-  },
-  card: {
-    width: "100%",
-    maxWidth: 400,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    boxShadow: "0 8px 24px rgba(37, 99, 235, 0.2)",
-    padding: "2rem",
-  },
-  title: {
-    textAlign: "center",
-    color: "#2563EB",
-    marginBottom: "2rem",
-    fontSize: "1.5rem",
-    fontWeight: "600",
-  },
-  error: {
-    color: "crimson",
-    marginTop: "1rem",
-    textAlign: "center",
-    fontSize: "0.9rem",
-  },
-  loading: {
-    color: "#2563EB",
-    marginTop: "1rem",
-    textAlign: "center",
-    fontSize: "0.9rem",
-  },
 };
 
 export default LoginPage;

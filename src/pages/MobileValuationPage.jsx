@@ -26,6 +26,7 @@ const MobileValuationPage = () => {
     useEffect(() => {
         verifyAuth();
         fetchMobileDetails();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [mobileId]);
 
     const verifyAuth = async () => {
@@ -78,7 +79,6 @@ const MobileValuationPage = () => {
         }
         setError('');
         setPrice(null);
-        let calculating = true;
         try {
             const response = await fetch('http://localhost:8080/api/valuation/calculate', {
                 method: 'POST',
@@ -110,8 +110,6 @@ const MobileValuationPage = () => {
         } catch (error) {
             setError(error.message || 'Failed to calculate price');
             console.error('Error:', error);
-        } finally {
-            calculating = false;
         }
     };
 
