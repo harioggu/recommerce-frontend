@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 import * as authService from "../services/authService";
 import '../styles/LoginPage.css';
@@ -60,7 +60,7 @@ const LoginPage = ({ onLoginSuccess }) => {
         {error && <div className="error-message">{error}</div>}
         <LoginForm onLogin={handleLogin} disabled={loading} />
         <p className="register-link">
-          Don't have an account? <a href="/register">Register here</a>
+          Don't have an account? <Link to="/register">Register here</Link>
         </p>
       </div>
     </div>

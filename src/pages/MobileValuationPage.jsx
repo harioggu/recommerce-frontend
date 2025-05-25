@@ -9,6 +9,8 @@ const conditions = {
     body: ["Perfect", "Scratched", "Damaged"]
 };
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const MobileValuationPage = () => {
     const { mobileId } = useParams();
     const [mobile, setMobile] = useState(null);
@@ -44,7 +46,7 @@ const MobileValuationPage = () => {
 
     const fetchMobileDetails = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/mobiles/${mobileId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/mobiles/${mobileId}`, {
                 credentials: 'include'
             });
             if (!response.ok) throw new Error('Failed to fetch mobile details');
@@ -80,7 +82,7 @@ const MobileValuationPage = () => {
         setError('');
         setPrice(null);
         try {
-            const response = await fetch('http://localhost:8080/api/valuation/calculate', {
+            const response = await fetch(`${API_BASE_URL}/api/valuation/calculate`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
